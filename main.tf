@@ -25,6 +25,7 @@ data "aws_iam_policy_document" "path_permissions" {
     ]
 
     resources = [
+      "arn:aws:s3:::${var.vault_bucket}/public/$${aws:username}/*",
       "arn:aws:s3:::${var.vault_bucket}/private/$${aws:username}/*",
     ]
   }
