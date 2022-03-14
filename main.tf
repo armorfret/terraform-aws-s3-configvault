@@ -79,19 +79,19 @@ resource "aws_s3_bucket_logging" "vault" {
 }
 
 resource "aws_iam_user_policy" "servers" {
-  for_each = var.server_users
+  for_each = local.server_users
   user     = each.key
   name     = "s3-path-permissions"
   policy   = data.aws_iam_policy_document.path_permissions.json
 }
 
 resource "awscreds_iam_access_key" "servers" {
-  for_each = var.server_users
+  for_each = local.server_users
   user     = each.key
   file     = "creds/${each.key}"
 }
 
 resource "aws_iam_user" "servers" {
-  for_each = var.server_users
+  for_each = local.server_users
   name     = each.key
 }
