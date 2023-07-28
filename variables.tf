@@ -14,6 +14,18 @@ variable "servers" {
   default     = []
 }
 
+variable "kms_key_arn" {
+  description = "Use custom KMS key for vault bucket"
+  type        = string
+  default     = ""
+}
+
+variable "use_kms" {
+  description = "Use KMS instead of AES SSE"
+  type        = bool
+  default     = false
+}
+
 variable "prefix" {
   description = "Prefix to use for configvault users"
   type        = string
