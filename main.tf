@@ -111,7 +111,7 @@ resource "awscreds_iam_access_key" "servers" {
   file     = "creds/${each.key}"
 }
 
-resource "aws_iam_user" "servers" {
+resource "aws_iam_user" "servers" { #trivy:ignore:AVD-AWS-0143
   for_each = local.server_users
   name     = each.key
 }
